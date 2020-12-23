@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <title>理解 update, enter, exit 的使用</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- https://blog.csdn.net/lzhlzz/article/details/36869567 -->
+
+    <p>AAAAAAAAA</p>
+    <p>BBBBBBBBB</p>
+    <p>CCCCCCCCC</p>
+
+    <script>
+      var dataset = [10, 20, 30, 40, 50]
+
+      var update = d3.select('body').selectAll('p').data(dataset)
+      var enter = update
+
+      update.text(function (d, i) {
+        return 'update ' + d
+      })
+
+      enter
+        .enter()
+        .append('p')
+        .text(function (d, i) {
+          return 'enter ' + d
+        })
+    </script>
+  </body>
+</html>
