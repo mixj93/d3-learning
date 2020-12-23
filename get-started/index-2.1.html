@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <title>关于如何选择，插入，删除元素</title>
+  </head>
+  <body>
+    <p>Hello World 1</p>
+    <p>Hello World 2</p>
+    <p>Hello World 3</p>
+
+    <script>
+      const body = d3.select('body') //选择body（第一个body，当然也只有一个body）
+      const p = body.select('p') //选择第一个p
+      const all_p = body.selectAll('p') //选择所有的p
+
+      all_p.style('color', 'blue')
+      p.style('color', 'red')
+
+      const new_p = body.append('p')
+      new_p.text('new p')
+      new_p.remove()
+    </script>
+  </body>
+</html>

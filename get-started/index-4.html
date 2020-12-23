@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <title>如何使用scale（比例）</title>
+  </head>
+  <body>
+    <!-- https://blog.csdn.net/lzhlzz/article/details/32709701 -->
+
+    <script>
+      var dataset = [30, 20, 52, 2, 11]
+      var result1 = d3.max(dataset)
+      console.log('🚀 ~ result1', result1) // 52
+
+      var dataset = [
+        [30, 20],
+        [52, 2],
+        [90, 11],
+      ]
+      var result2 = d3.max(dataset, function (d) {
+        return d[0]
+      })
+      console.log('🚀 ~ result2 ~ result2', result2) // 90
+
+      var scale = d3.scaleLinear()
+      scale.domain([0, 20]).range([0, 100]) // domain（定义域），range（值域）
+      var result3 = scale(10)
+      console.log('🚀 ~ result3', result3) // 50
+
+      const scale2 = scale
+        .domain([0.000000001, 9.99999999991])
+        .range([0, 100])
+        .nice()
+      const result4 = scale2(0)
+      console.log('🚀 ~ result4', result4) // 0
+      const result5 = scale2(100)
+      console.log('🚀 ~ result5', result5) // 1000
+    </script>
+  </body>
+</html>
